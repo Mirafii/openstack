@@ -12,11 +12,6 @@ KOLLA_ANSIBLE_VERSION="${KOLLA_ANSIBLE_VERSION:-master}"
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 VENV_DIR="${HERE}/.venv"
 
-if [[ "${EUID}" -eq 0 ]]; then
-  echo "Ne lance pas ce script en root direct : utilise un user sudo (sudo sera appelé au besoin)." >&2
-  exit 1
-fi
-
 echo "==> Installation des paquets système requis"
 sudo apt-get update
 sudo apt-get install -y python3-dev python3-venv python3-pip libffi-dev gcc libssl-dev git
