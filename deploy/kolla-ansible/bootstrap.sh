@@ -2,7 +2,7 @@
 #
 # Prépare la machine Linux cible pour un déploiement Kolla-Ansible All-In-One.
 # À exécuter EN SSH sur la machine Linux (Ubuntu 22.04 recommandé), depuis ce
-# dossier, avec un utilisateur sudo :
+# dossier, avec un utilisateur  :
 #
 #   ./bootstrap.sh
 #
@@ -13,8 +13,8 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 VENV_DIR="${HERE}/.venv"
 
 echo "==> Installation des paquets système requis"
-sudo apt-get update
-sudo apt-get install -y python3-dev python3-venv python3-pip libffi-dev gcc libssl-dev git
+ apt-get update
+ apt-get install -y python3-dev python3-venv python3-pip libffi-dev gcc libssl-dev git
 
 echo "==> Création du virtualenv Python (${VENV_DIR})"
 python3 -m venv "${VENV_DIR}"
@@ -26,8 +26,8 @@ pip install "git+https://opendev.org/openstack/kolla-ansible@${KOLLA_ANSIBLE_VER
 
 echo "==> Installation des dépendances Ansible de Kolla"
 KOLLA_SHARE="$(python3 -c 'import kolla_ansible; import os; print(os.path.dirname(kolla_ansible.__file__))')"
-sudo mkdir -p /etc/kolla
-sudo chown "$(whoami):$(whoami)" /etc/kolla
+ mkdir -p /etc/kolla
+ chown "$(whoami):$(whoami)" /etc/kolla
 cp -r "${VENV_DIR}"/share/kolla-ansible/etc_examples/kolla/* /etc/kolla/ 2>/dev/null || true
 kolla-ansible install-deps
 
