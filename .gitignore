@@ -1,0 +1,27 @@
+# --- Kolla-Ansible generated secrets / config, never commit ---
+deploy/kolla-ansible/globals.yml
+deploy/kolla-ansible/passwords.yml
+deploy/kolla-ansible/admin-openrc.sh
+deploy/kolla-ansible/clouds.yaml
+*.retry
+
+# --- Terraform ---
+**/.terraform/
+**/.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+*.tfvars
+!**/*.tfvars.example
+crash.log
+crash.*.log
+
+# --- OpenStack credentials ---
+openrc.sh
+clouds.yaml
+
+# --- Python venv used to run kolla-ansible ---
+deploy/kolla-ansible/.venv/
+
+# --- Editors / OS ---
+.vscode/
+.DS_Store

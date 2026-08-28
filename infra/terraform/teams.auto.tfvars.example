@@ -1,0 +1,13 @@
+# Copie ce fichier en teams.auto.tfvars (ignoré par git) et adapte-le : une
+# entrée par équipe SI. La clé de la map devient le nom du projet OpenStack.
+
+teams = {
+  "equipe-marketing" = {
+    domain_name = "marketing.example.lab"
+    subnet_cidr = "192.168.101.0/24"
+  }
+  "equipe-rh" = {
+    domain_name = "rh.example.lab"
+    subnet_cidr = "192.168.102.0/24"
+  }
+}

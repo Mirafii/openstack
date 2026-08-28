@@ -1,0 +1,22 @@
+# Inventaire Kolla-Ansible pour un déploiement "All-In-One" : la machine sur
+# laquelle tourne ce script est à la fois le nœud de contrôle, réseau et
+# compute. Ne pas modifier sauf si tu ajoutes de vrais nœuds compute
+# supplémentaires plus tard (voir la doc Kolla-Ansible "multinode").
+
+[control]
+localhost ansible_connection=local
+
+[network]
+localhost ansible_connection=local
+
+[compute]
+localhost ansible_connection=local
+
+[monitoring]
+localhost ansible_connection=local
+
+[storage]
+localhost ansible_connection=local
+
+[deployment]
+localhost ansible_connection=local

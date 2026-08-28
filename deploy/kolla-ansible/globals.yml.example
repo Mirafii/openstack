@@ -1,0 +1,31 @@
+# Copie ce fichier en globals.yml (bootstrap.sh le fait automatiquement) puis
+# adapte au minimum les valeurs marquées "À ADAPTER" à ta machine Linux.
+#
+# Doc complète : https://docs.openstack.org/kolla-ansible/latest/reference/
+
+---
+kolla_base_distro: "ubuntu"
+kolla_install_type: "source"
+openstack_release: "2024.1"
+
+# IP virtuelle interne utilisée par les services OpenStack. Doit être une IP
+# libre sur le même réseau que network_interface (en AIO mono-nœud, une IP
+# libre du même sous-réseau que l'interface de gestion suffit).
+kolla_internal_vip_address: "10.0.1.250"   # À ADAPTER
+
+# Interface réseau "de gestion" de la machine (celle par laquelle tu t'y
+# connectes en SSH / celle qui a l'IP principale). `ip -br a` pour la lister.
+network_interface: "eth0"                  # À ADAPTER
+
+# Interface dédiée au réseau externe Neutron (celle par laquelle les IP
+# flottantes seront routées). Sur une VM avec une seule carte réseau, on peut
+# réutiliser la même interface que network_interface si le mode "flat
+# provider network" bridgé le permet — voir docs/architecture.md.
+neutron_external_interface: "eth1"         # À ADAPTER
+
+# Services activés : le strict nécessaire pour ce cas d'usage (Nova, Neutron,
+# Glance, Keystone, Horizon). Désactive ce que tu n'utilises pas pour
+# accélérer le déploiement.
+enable_cinder: "no"
+enable_horizon: "yes"
+enable_neutron_provider_networks: "yes"
